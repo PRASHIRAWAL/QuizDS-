@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block content %}
+    <h1 class="page-title">Analytics</h1>
+    <div class="analytics-grid">
+        <div class="card">
+            <h3>Total Users</h3>
+            <p class="stat">{{ total_users }}</p>
+        </div>
+        <div class="card">
+            <h3>Total Quizzes</h3>
+            <p class="stat">{{ total_quizzes }}</p>
+        </div>
+        <div class="card">
+            <h3>Total Submissions</h3>
+            <p class="stat">{{ total_submissions }}</p>
+        </div>
+    </div>
+{% endblock %}

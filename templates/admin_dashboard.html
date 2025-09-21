@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1 class="page-title">Admin Dashboard</h1>
+    <div class="admin-menu">
+        <a href="{{ url_for('admin_create_quiz') }}" class="btn">Create New Quiz</a>
+        <a href="{{ url_for('user_dashboard') }}" class="btn btn-secondary">View & Manage Quizzes</a>
+        <a href="{{ url_for('admin_submissions') }}" class="btn btn-secondary">View All Submissions</a>
+        <a href="{{ url_for('admin_analytics') }}" class="btn btn-secondary">View Analytics</a>
+    </div>
+{% endblock %}

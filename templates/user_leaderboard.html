@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1 class="page-title">Leaderboard: {{ quiz.title }}</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Rank</th>
+                <th>User</th>
+                <th>Score</th>
+                <th>Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for submission in submissions %}
+            <tr>
+                <td>{{ loop.index }}</td>
+                <td>{{ submission.author.username }}</td>
+                <td>{{ submission.score }}</td>
+                <td>{{ submission.timestamp.strftime('%Y-%m-%d %H:%M') }}</td>
+            </tr>
+            {% else %}
+            <tr>
+                <td colspan="4">No submissions yet.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

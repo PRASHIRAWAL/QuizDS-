@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div id="quiz-container" class="card" data-quiz-id="{{ quiz.id }}">
+        <h2 id="quiz-title">{{ quiz.title }}</h2>
+        <div id="question-area">
+            <p id="question-text"></p>
+            <div id="options-list"></div>
+        </div>
+        <div id="navigation-area">
+            <button id="prev-btn" class="btn btn-secondary">Previous</button>
+            <button id="next-btn" class="btn">Next</button>
+            <button id="submit-btn" class="btn btn-success" style="display:none;">Submit</button>
+        </div>
+    </div>
+
+    <div id="result-container" class="card" style="display:none;">
+        <h2>Quiz Complete!</h2>
+        <p>Your score is: <strong id="score"></strong></p>
+        <a href="{{ url_for('user_dashboard') }}" class="btn">Back to Dashboard</a>
+        <a href="{{ url_for('user_leaderboard', quiz_id=quiz.id) }}" class="btn btn-secondary">View Leaderboard</a>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/quiz.js') }}"></script>
+{% endblock %}

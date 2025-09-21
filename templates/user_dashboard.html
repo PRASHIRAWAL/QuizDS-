@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1 class="page-title">Available Quizzes</h1>
+    <div class="quiz-list">
+        {% for quiz in quizzes %}
+            <div class="card">
+                <h3>{{ quiz.title }}</h3>
+                <p>{{ quiz.description }}</p>
+                <div class="card-actions">
+                    <a href="{{ url_for('user_quiz', quiz_id=quiz.id) }}" class="btn">Start Quiz</a>
+                    <a href="{{ url_for('user_leaderboard', quiz_id=quiz.id) }}" class="btn btn-secondary">Leaderboard</a>
+                    {% if current_user.is_admin %}
+                    <a href="{{ url_for('admin_edit_quiz', quiz_id=quiz.id) }}" class="btn btn-warning">Edit</a>
+                    <form action="{{ url_for('delete_quiz', quiz_id=quiz.id) }}" method="POST" style="display:inline;">
+                        <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure?')">Delete</button>
+                    </form>
+                    {% endif %}
+                </div>
+            </div>
+        {% else %}
+            <p>No quizzes available at the moment.</p>
+        {% endfor %}
+    </div>
+{% endblock %}

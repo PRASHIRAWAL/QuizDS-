@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block content %}
+    <h1 class="page-title">All Submissions</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>User</th>
+                <th>Quiz</th>
+                <th>Score</th>
+                <th>Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for sub in submissions %}
+            <tr>
+                <td>{{ sub.author.username }}</td>
+                <td>{{ sub.quiz.title }}</td>
+                <td>{{ sub.score }}</td>
+                <td>{{ sub.timestamp.strftime('%Y-%m-%d %H:%M') }}</td>
+            </tr>
+            {% else %}
+            <tr>
+                <td colspan="4">No submissions yet.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
